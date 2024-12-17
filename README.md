@@ -59,21 +59,21 @@
 
 ---
 
-    ### **三、系统架构设计**
+### **三、系统架构设计**
 
-    #### **MVC 架构**
-    - **Model（数据层）**：  
-    - 实体类：`NewsBean` 和 `NewsTypeBean`。  
-    - DAO 类：`NewsDao` 和 `NewsTypeDao`，封装数据库操作。  
+#### **MVC 架构**
+- **Model（数据层）**：  
+- 实体类：`NewsBean` 和 `NewsTypeBean`。  
+- DAO 类：`NewsDao` 和 `NewsTypeDao`，封装数据库操作。  
 
-    - **View（视图层）**：  
-    - JSP 页面：`index.jsp`、`search.jsp` 和 `info.jsp`，展示新闻列表、搜索结果和详情。
+- **View（视图层）**：  
+- JSP 页面：`index.jsp`、`search.jsp` 和 `info.jsp`，展示新闻列表、搜索结果和详情。
 
-    - **Controller（控制器层）**：  
-    - Servlet 类：  
-        - **`NewsServlet`**：获取所有新闻和类别，转发到首页展示。  
-        - **`SearchServlet`**：处理搜索功能，返回搜索结果。  
-        - **`InfoServlet`**（待完善）：实现新闻详情显示。
+- **Controller（控制器层）**：  
+- Servlet 类：  
+- **`NewsServlet`**：获取所有新闻和类别，转发到首页展示。  
+- **`SearchServlet`**：处理搜索功能，返回搜索结果。  
+- **`InfoServlet`**（待完善）：实现新闻详情显示。   
 
 ---
 
