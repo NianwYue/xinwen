@@ -36,7 +36,7 @@ public class NewsDao {
         String sql = null;
         if ("title".equalsIgnoreCase(searchTarget)) {
             sql = "SELECT x.newsId, x.newsTitle, x.newsTypeId, xt.newsTypeName, x.newsPublishTime " +
-                    "   FROM xinwen x JOIN xinwenType xt ON x.newsTypeId = xt.newsTypeId " +
+                    "FROM xinwen x JOIN xinwenType xt ON x.newsTypeId = xt.newsTypeId " +
                     "WHERE x.newsTitle LIKE ?";
         } else if ("content".equalsIgnoreCase(searchTarget)) {
             sql = "SELECT x.newsId, x.newsTitle, x.newsTypeId, xt.newsTypeName, x.newsPublishTime " +
