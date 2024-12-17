@@ -2,6 +2,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="cn.edu.sdcet.entity.NewsBean" %>
 <%@ page import="java.util.*" %>
+<%@ page import="cn.edu.sdcet.entity.NewsTypeBean" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +15,15 @@
 	<div id="header">
 		<div id="logo"><a href="index.htm" title="新闻信息管理系统">新闻信息管理系统</a></div>
 		<div class="search">
-			<form id="form1" method="post" action="search.jsp">
+			<form id="form1" method="post" action="<%= request.getContextPath() %>/search" accept-charset="UTF-8">
 				<input type="text" name="searchContent" id="textfield" class="iText" />
 				<select name="searchTarget">
-					<option selected="selected">标题</option>
-					<option>内容</option>
+					<option value="title" selected="selected">标题</option>
+					<option value="content">内容</option>
 				</select>
 				<input type="submit" name="Submit" class="btn" value="搜索" />
-				<input type="hidden" name="XXX" value="002">
 			</form>
+
 		</div>
 	</div>
 	<div id="main" class="wrapfix">
@@ -55,9 +56,25 @@
 			<div id="nav">
 				<h3>新闻类别</h3>
 				<ul>
+					<%
+						// 获取新闻类别数据
+						List<NewsTypeBean> newsTypeList = (List<NewsTypeBean>) request.getAttribute("newsTypeList");
+						if (newsTypeList != null) {
+							for (NewsTypeBean type : newsTypeList) {
+					%>
+					<li>
+						<a href="List.jsp?typeId=<%=type.getNewsTypeId()%>">
+							<%=type.getNewsTypeName()%>
+						</a>
+					</li>
+					<%
+							}
+						}
+					%>
 				</ul>
 			</div>
 		</div>
+
 	</div>
 	<div id="footer">
 		<p>版权所有 &copy;<a href="https://www.sdcet.edu.cn/" target="_blank">山东电子职业技术学院 </a></p>

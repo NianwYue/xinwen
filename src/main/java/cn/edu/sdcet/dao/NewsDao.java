@@ -33,22 +33,32 @@ public class NewsDao {
 
     // 按条件搜索新闻
     public List<NewsBean> searchNews(String searchTarget, String searchContent) {
-        String sql;
+        String sql = null;
         if ("title".equalsIgnoreCase(searchTarget)) {
             sql = "SELECT x.newsId, x.newsTitle, x.newsTypeId, xt.newsTypeName, x.newsPublishTime " +
-                    "FROM xinwen x JOIN xinwenType xt ON x.newsTypeId = xt.newsTypeId " +
+                    "   FROM xinwen x JOIN xinwenType xt ON x.newsTypeId = xt.newsTypeId " +
                     "WHERE x.newsTitle LIKE ?";
-        } else {
+        } else if ("content".equalsIgnoreCase(searchTarget)) {
             sql = "SELECT x.newsId, x.newsTitle, x.newsTypeId, xt.newsTypeName, x.newsPublishTime " +
                     "FROM xinwen x JOIN xinwenType xt ON x.newsTypeId = xt.newsTypeId " +
                     "WHERE xt.newsTypeName LIKE ?";
         }
+
         return executeQuery(sql, "%" + searchContent + "%");
     }
 
+    // 根据新闻类别ID获取新闻列表
+    public List<NewsBean> getNewsByTypeId(String typeId) {
+        String sql = "SELECT x.newsId, x.newsTitle, x.newsTypeId, t.newsTypeName, x.newsPublishTime " +
+                "FROM xinwen x " +
+                "JOIN xinwenType t ON x.newsTypeId = t.newsTypeId " +
+                "WHERE x.newsTypeId = ?";
+        return executeQuery(sql, typeId);
+    }
+
+
     // 通用查询执行方法
     private List<NewsBean> executeQuery(String sql, String param) {
-
         List<NewsBean> newsList = new ArrayList<>();
 
         try (Connection conn = getConnection();
@@ -78,4 +88,5 @@ public class NewsDao {
 
         return newsList;
     }
+
 }

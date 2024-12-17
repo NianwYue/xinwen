@@ -16,7 +16,7 @@
     	System.out.println("newsid:"+request.getParameter("newsid"));
   		//1、注册（加载）驱动。使用Class.forName，将显示的加载驱动程序类
     	Class.forName("com.mysql.jdbc.Driver");
-    	//2、做好前置准备工作（准备数据库连接字符串）
+    	//2、做好前置准备工作（准备数据库连接字符串）
         String dbName = "student";
         String userName = "root";
         String userPasswd = "19821218";
