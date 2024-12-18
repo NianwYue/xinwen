@@ -38,7 +38,13 @@
 						while (it.hasNext()) {
 							NewsBean news = it.next();
 						%>
-						<li><span class="category">[<%=news.getNewsTypeName() %>]</span><a href="info.jsp?newsid=<%=news.getNewsId() %>" target="_blank"><%=news.getNewsTitle() %></a><span class="date"><%=news.getNewsPublishTime() %></span></li>
+						<li>
+							<span class="category">[<%= news.getNewsTypeName() %>]</span>
+							<a href="info1.jsp" target="_blank">
+								<%= news.getNewsTitle() %>
+							</a>
+							<span class="date"><%= news.getNewsPublishTime() %></span>
+						</li>
 						<%}%>
 					</ul>
 				</div>
@@ -63,8 +69,8 @@
 							for (NewsTypeBean type : newsTypeList) {
 					%>
 					<li>
-						<a href="List.jsp?typeId=<%=type.getNewsTypeId()%>">
-							<%=type.getNewsTypeName()%>
+						<a href="listNews?typeId=<%= type.getNewsTypeId() %>">
+						<%=type.getNewsTypeName()%>
 						</a>
 					</li>
 					<%
